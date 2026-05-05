@@ -138,6 +138,13 @@
     .faq-a p { font-size:14px; color:var(--gray-700); line-height:1.7; }
     .faq-a.open { display:block; }
 
+    /* PHONE INPUT */
+    .phone-input-wrap { display:flex; border:1.5px solid var(--gray-100); border-radius:7px; overflow:hidden; transition:border-color 0.2s,box-shadow 0.2s; }
+    .phone-input-wrap:focus-within { border-color:var(--navy); box-shadow:0 0 0 3px rgba(14,31,61,0.08); }
+    .phone-prefix { padding:11px 12px; background:var(--gray-100); font-size:14px; font-weight:600; color:var(--gray-700); border-right:1.5px solid var(--gray-100); display:flex; align-items:center; flex-shrink:0; user-select:none; }
+    .phone-input-wrap input { border:none !important; border-radius:0 !important; box-shadow:none !important; flex:1; min-width:0; }
+    .phone-input-wrap input:focus { box-shadow:none !important; }
+
     /* CONTACT */
     .cta-section { background:var(--off-white); padding:96px 6%; text-align:left; }
     .contact-inner { display:grid; grid-template-columns:1fr 1.4fr; gap:80px; align-items:start; }
@@ -380,7 +387,16 @@
           <div class="form-group"><label for="fname" data-i18n="form.name">Your name</label><input type="text" id="fname" name="name" data-i18n-placeholder="form.name.ph" placeholder="Wei Zhang" required /></div>
           <div class="form-group"><label for="fcompany" data-i18n="form.company">Company</label><input type="text" id="fcompany" name="company" data-i18n-placeholder="form.company.ph" placeholder="Acme Manufacturing Co." required /></div>
         </div>
-        <div class="form-group"><label for="femail" data-i18n="form.email">Work email</label><input type="email" id="femail" name="email" placeholder="you@company.com" required /></div>
+        <div class="form-row">
+          <div class="form-group"><label for="femail" data-i18n="form.email">Work email</label><input type="email" id="femail" name="email" placeholder="you@company.com" required /></div>
+          <div class="form-group">
+            <label for="fphone"><span data-i18n="form.phone">Work phone</span> <span class="form-optional" data-i18n="form.optional">(optional)</span></label>
+            <div class="phone-input-wrap">
+              <span class="phone-prefix" id="phonePrefix">+1</span>
+              <input type="tel" id="fphone" name="phone" data-i18n-placeholder="form.phone.ph" placeholder="555-123-4567" />
+            </div>
+          </div>
+        </div>
         <div class="form-group"><label for="fstage" data-i18n="form.stage">Which stage best describes you?</label><select id="fstage" name="stage" required></select></div>
         <div class="form-group"><label for="fmsg"><span data-i18n="form.msg">Tell us about your situation</span> <span class="form-optional" data-i18n="form.optional">(optional)</span></label><textarea id="fmsg" name="message" rows="4" data-i18n-placeholder="form.msg.ph" placeholder="A brief description of your US ambitions and where you're stuck..."></textarea></div>
         <button type="submit" class="btn-navy form-submit"><span data-i18n="form.submit">Send Message</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -485,7 +501,8 @@ const T = {
     'contact.sub':'Every engagement starts with a short conversation. Tell us where you are in your US journey and we\'ll tell you exactly where we can help.',
     'contact.location':'United States',
     'form.name':'Your name','form.name.ph':'Wei Zhang','form.company':'Company','form.company.ph':'Acme Manufacturing Co.',
-    'form.email':'Work email','form.stage':'Which stage best describes you?',
+    'form.email':'Work email','form.phone':'Work phone','form.phone.ph':'555-123-4567','form.phone.prefix':'+1',
+    'form.stage':'Which stage best describes you?',
     'form.msg':'Tell us about your situation','form.msg.ph':'A brief description of your US ambitions and where you\'re stuck...','form.optional':'(optional)',
     'form.submit':'Send Message','form.success':'Message sent — we\'ll be in touch within one business day.',
     'footer.tagline':'Helping Chinese companies establish and grow their operations in the United States — at every stage of the journey.',
@@ -568,7 +585,8 @@ const T = {
     'contact.sub':'每次合作都从一次简短的对话开始。告诉我们您在美国市场旅程中所处的位置，我们会明确告知能为您提供哪些帮助。',
     'contact.location':'美国',
     'form.name':'您的姓名','form.name.ph':'张伟','form.company':'公司名称','form.company.ph':'示例制造有限公司',
-    'form.email':'工作邮箱','form.stage':'哪个阶段最符合您的情况？',
+    'form.email':'工作邮箱','form.phone':'联系电话','form.phone.ph':'138 0000 0000','form.phone.prefix':'+86',
+    'form.stage':'哪个阶段最符合您的情况？',
     'form.msg':'请描述您的情况','form.msg.ph':'简要描述您的美国市场目标以及当前面临的挑战…','form.optional':'（可选）',
     'form.submit':'发送消息','form.success':'消息已发送——我们将在一个工作日内与您联系。',
     'footer.tagline':'帮助中国企业在美国建立并发展业务——覆盖旅程的每个阶段。',
@@ -645,6 +663,7 @@ function applyLang() {
   });
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+  document.getElementById('phonePrefix').textContent = T[lang]['form.phone.prefix'];
   buildFaq();
   buildStageSelect();
 }
@@ -654,20 +673,45 @@ function setLang(l) {
   applyLang();
 }
 
-// Contact form
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+// Contact form — Formspree
+const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // replace with your ID from formspree.io/forms
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const name    = document.getElementById('fname').value.trim();
   const company = document.getElementById('fcompany').value.trim();
   const email   = document.getElementById('femail').value.trim();
+  const phone   = document.getElementById('fphone').value.trim();
   const stage   = document.getElementById('fstage').value;
   const message = document.getElementById('fmsg').value.trim();
   if (!name || !company || !email || !stage) return;
-  const subject = encodeURIComponent('Run Far — Enquiry from ' + name + ' (' + company + ')');
-  const body = encodeURIComponent('Name: ' + name + '\nCompany: ' + company + '\nEmail: ' + email + '\nStage: ' + stage + '\n\n' + (message || '(no additional message)'));
-  window.location.href = 'mailto:harrison@runfar.ai?subject=' + subject + '&body=' + body;
-  document.getElementById('formSuccess').style.display = 'flex';
-  this.reset();
+
+  const submitBtn = this.querySelector('.form-submit');
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = '0.6';
+
+  try {
+    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name, company, email,
+        phone: phone ? T[lang]['form.phone.prefix'] + ' ' + phone : '—',
+        stage, message: message || '—'
+      })
+    });
+    if (res.ok) {
+      document.getElementById('formSuccess').style.display = 'flex';
+      this.reset();
+      document.getElementById('phonePrefix').textContent = T[lang]['form.phone.prefix'];
+    } else {
+      alert('Something went wrong. Please email harrison@runfar.ai directly.');
+    }
+  } catch {
+    alert('Something went wrong. Please email harrison@runfar.ai directly.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = '1';
+  }
 });
 
 applyLang();
