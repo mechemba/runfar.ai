@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Run Far — China to US Market Entry & Growth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0E1F3D;
+      --navy-mid:#1A3260;
+      --red:     #C0392B;
+      --red-light:#E84040;
+      --gold:    #D4A843;
+      --white:   #FFFFFF;
+      --off-white:#F7F8FC;
+      --gray-100:#EFF1F6;
+      --gray-300:#C8CEDA;
+      --gray-500:#7D8AA0;
+      --gray-700:#3D4A5C;
+      --text:    #0E1F3D;
+      --radius:  10px;
+      --shadow:  0 4px 24px rgba(14,31,61,0.10);
+      --shadow-lg: 0 12px 48px rgba(14,31,61,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-100);
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-logo-mark::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      background: var(--red);
+      border-radius: 50%;
+    }
+
+    .nav-logo-mark svg {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-logo-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo-text span {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray-700);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--navy); }
+
+    .nav-cta {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--navy-mid) !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, #1E4080 100%);
+      color: var(--white);
+      padding: 100px 6% 110px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(192,57,43,0.12);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: 8%;
+      bottom: -60px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(212,168,67,0.08);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge::before {
+      content: '⬤';
+      font-size: 6px;
+      color: var(--gold);
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .accent { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
+      line-height: 1.65;
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover { background: var(--red-light); transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-stages {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 28px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-stages-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .stage-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.2s;
+    }
+
+    .stage-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .stage-item:first-of-type { padding-top: 0; }
+
+    .stage-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .stage-info { flex: 1; }
+
+    .stage-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .stage-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.4;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--off-white);
+      border-bottom: 1px solid var(--gray-100);
+      padding: 20px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+
+    .trust-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--red);
+    }
+
+    /* ── OVERVIEW ── */
+    .section {
+      padding: 96px 6%;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.8px;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--gray-500);
+      line-height: 1.7;
+      max-width: 620px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .overview-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .overview-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .overview-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    .overview-num {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--red);
+      width: 40px;
+      flex-shrink: 0;
+      letter-spacing: -1px;
+    }
+
+    .overview-card-text { flex: 1; }
+
+    .overview-card-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+
+    .overview-card-profile {
+      font-size: 12px;
+      color: var(--gray-500);
+    }
+
+    .overview-arrow {
+      color: var(--gray-300);
+      font-size: 16px;
+    }
+
+    /* ── SERVICES ── */
+    .services-section {
+      background: var(--off-white);
+      padding: 96px 6%;
+    }
+
+    .services-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+      border-color: var(--gray-300);
+    }
+
+    .service-card.featured {
+      border-color: var(--navy);
+      grid-column: span 1;
+    }
+
+    .service-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .service-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--off-white);
+      color: var(--gray-500);
+      padding: 5px 10px;
+      border-radius: 100px;
+    }
+
+    .service-num {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .service-num.red { background: var(--red); }
+
+    .service-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .service-profile {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 14px;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--gray-500);
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+
+    .service-divider {
+      height: 1px;
+      background: var(--gray-100);
+      margin-bottom: 20px;
+    }
+
+    .service-delivers-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--gray-700);
+      margin-bottom: 12px;
+    }
+
+    .service-delivers {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .service-delivers li {
+      font-size: 13px;
+      color: var(--gray-700);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
+    .service-delivers li::before {
+      content: '✓';
+      color: var(--red);
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* last two cards row */
+    .services-row2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    /* ── HOW WE ENGAGE ── */
+    .engage-section {
+      padding: 96px 6%;
+    }
+
+    .engage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .engage-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .engage-step {
+      display: flex;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .engage-step:last-child { border-bottom: none; }
+
+    .engage-step-dot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .engage-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .engage-step-body { flex: 1; }
+
+    .engage-step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .engage-step-desc {
+      font-size: 14px;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+
+    .engage-callout {
+      background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 20px;
+      padding: 44px;
+      color: var(--white);
+    }
+
+    .engage-callout-title {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .engage-callout-body {
+      font-size: 15px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .engage-team {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .engage-team-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .engage-team-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--off-white);
+      padding: 96px 6%;
+      text-align: center;
+    }
+
+    .cta-section .section-title {
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+
+    .cta-section .section-sub {
+      max-width: 520px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-navy {
+      background: var(--navy);
+      color: var(--white);
+      padding: 15px 32px;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-navy:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      padding: 15px 32px;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid var(--gray-300);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--navy); background: var(--gray-100); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      padding: 56px 6% 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-brand-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.5);
+      max-width: 280px;
+    }
+
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── RESPONSIVE ── */
+    /* ── FAQ ── */
+    .faq-header {
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .faq-grid {
+      max-width: 860px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-q {
+      width: 100%;
+      background: var(--white);
+      border: none;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    .faq-q:hover { background: var(--off-white); }
+    .faq-q[aria-expanded="true"] { background: var(--off-white); color: var(--red); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      color: var(--gray-300);
+      transition: transform 0.25s, color 0.2s;
+    }
+
+    .faq-q[aria-expanded="true"] .faq-icon {
+      transform: rotate(180deg);
+      color: var(--red);
+    }
+
+    .faq-a {
+      display: none;
+      padding: 0 28px 22px;
+      background: var(--off-white);
+    }
+
+    .faq-a p {
+      font-size: 14px;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+
+    .faq-a.open { display: block; }
+
+    /* ── CONTACT FORM ── */
+    .cta-section { background: var(--off-white); padding: 96px 6%; text-align: left; }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--gray-700);
+    }
+
+    .contact-detail a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .contact-detail a:hover { color: var(--red); }
+
+    .contact-detail-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--gray-100);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .contact-form-wrap {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .form-optional {
+      font-weight: 400;
+      color: var(--gray-500);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1.5px solid var(--gray-100);
+      border-radius: 7px;
+      padding: 11px 14px;
+      font-size: 14px;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--gray-300); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(14,31,61,0.08);
+    }
+
+    .form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%237D8AA0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit { width: 100%; justify-content: center; padding: 14px; font-size: 15px; }
+
+    .form-success {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #27ae60;
+      background: #f0faf4;
+      border: 1px solid #a8e6c0;
+      border-radius: 7px;
+      padding: 12px 16px;
+    }
+
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 5%; }
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 72px 5% 80px;
+        gap: 48px;
+      }
+
+      .hero::before, .hero::after { display: none; }
+
+      .overview-grid,
+      .engage-grid,
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .services-grid,
+      .services-row2 {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+      .section, .services-section, .engage-section, .cta-section {
+        padding: 64px 5%;
+      }
+
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .contact-form-wrap { padding: 28px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .hero h1 { letter-spacing: -1px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M8 3l5 5-5 5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">Run<span> Far</span></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how-we-engage">How We Work</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Start a Conversation</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">China → United States</div>
+    <h1>From China to the<br/><span class="accent">US Market</span>,<br/>at every stage.</h1>
+    <p class="hero-sub">
+      Five tailored services for five stages of US growth. We help Chinese companies establish and expand US operations — from the first reference customer to full value-chain advancement.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">
+        See Our Services
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#contact" class="btn-ghost">Talk to Us</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-stages">
+      <div class="hero-stages-title">Your US growth journey</div>
+
+      <div class="stage-item">
+        <div class="stage-num">1</div>
+        <div class="stage-info">
+          <div class="stage-name">Go-to-Market Launch</div>
+          <div class="stage-desc">No US customers yet</div>
+        </div>
+      </div>
+      <div class="stage-item">
+        <div class="stage-num">2</div>
+        <div class="stage-info">
+          <div class="stage-name">Account & Wallet Growth</div>
+          <div class="stage-desc">Customers, no US presence</div>
+        </div>
+      </div>
+      <div class="stage-item">
+        <div class="stage-num">3</div>
+        <div class="stage-info">
+          <div class="stage-name">Strategic Account Expansion</div>
+          <div class="stage-desc">Deep customer relationships</div>
+        </div>
+      </div>
+      <div class="stage-item">
+        <div class="stage-num">4</div>
+        <div class="stage-info">
+          <div class="stage-name">Supply Chain Optimization</div>
+          <div class="stage-desc">Significant US footprint</div>
+        </div>
+      </div>
+      <div class="stage-item">
+        <div class="stage-num">5</div>
+        <div class="stage-info">
+          <div class="stage-name">Value Chain Advancement</div>
+          <div class="stage-desc">Established US operations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+    US-based senior operators
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+    Bilingual — Mandarin & English
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+    Fixed-fee, clear deliverables
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+    Supply chain, commercial & M&A specialists
+  </div>
+</div>
+
+<!-- ── OVERVIEW ── -->
+<section class="section" id="overview">
+  <div class="overview-grid">
+    <div>
+      <div class="section-label">Who we serve</div>
+      <h2 class="section-title">The right service for where you are today</h2>
+      <p class="section-sub">
+        Most clients enter at one stage and graduate to the next. Many engage us across multiple services as their US business matures. Each engagement is calibrated to your specific stage of US engagement — not a one-size-fits-all approach.
+      </p>
+    </div>
+    <div class="overview-right">
+      <div class="overview-card">
+        <div class="overview-num">01</div>
+        <div class="overview-card-text">
+          <div class="overview-card-name">Go-to-Market & Commercial Launch</div>
+          <div class="overview-card-profile">No US customers</div>
+        </div>
+        <div class="overview-arrow">→</div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-num">02</div>
+        <div class="overview-card-text">
+          <div class="overview-card-name">Account Growth & Share-of-Wallet</div>
+          <div class="overview-card-profile">Customers, no US presence</div>
+        </div>
+        <div class="overview-arrow">→</div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-num">03</div>
+        <div class="overview-card-text">
+          <div class="overview-card-name">Strategic Account Expansion</div>
+          <div class="overview-card-profile">Deep customer relationships</div>
+        </div>
+        <div class="overview-arrow">→</div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-num">04</div>
+        <div class="overview-card-text">
+          <div class="overview-card-name">Supply Chain Optimization</div>
+          <div class="overview-card-profile">Significant US footprint</div>
+        </div>
+        <div class="overview-arrow">→</div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-num">05</div>
+        <div class="overview-card-text">
+          <div class="overview-card-name">Value Chain Advancement</div>
+          <div class="overview-card-profile">Established US operations</div>
+        </div>
+        <div class="overview-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services-section" id="services">
+  <div class="services-header">
+    <div class="section-label">Five core services</div>
+    <h2 class="section-title">Every stage of your US growth</h2>
+    <p class="section-sub">
+      From a blank US slate to full strategic differentiation — we cover the entire journey.
+    </p>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- Service 01 -->
+    <div class="service-card">
+      <div class="service-card-header">
+        <span class="service-tag">Profile 01</span>
+        <div class="service-num">01</div>
+      </div>
+      <div class="service-profile">No US customers</div>
+      <div class="service-title">Go-to-Market Strategy &amp; Commercial Launch</div>
+      <div class="service-desc">
+        Take you from a blank US slate to a qualified, contracted customer pipeline — with a sharp, data-driven plan and on-the-ground execution to land first reference accounts.
+      </div>
+      <div class="service-divider"></div>
+      <div class="service-delivers-label">Client outcomes</div>
+      <ul class="service-delivers">
+        <li>A defensible US go-to-market plan with clear targets, milestones, and unit economics</li>
+        <li>A qualified pipeline of named US accounts with active opportunities</li>
+        <li>First reference customers signed and onboarded</li>
+        <li>A repeatable sales motion and messaging playbook your team can scale</li>
+      </ul>
+    </div>
+
+    <!-- Service 02 -->
+    <div class="service-card">
+      <div class="service-card-header">
+        <span class="service-tag">Profile 02</span>
+        <div class="service-num">02</div>
+      </div>
+      <div class="service-profile">Customers, no US presence</div>
+      <div class="service-title">Account Growth &amp; Share-of-Wallet Expansion</div>
+      <div class="service-desc">
+        Sharpen your offer for US buyers and systematically grow revenue from accounts you already serve — without a local presence.
+      </div>
+      <div class="service-divider"></div>
+      <div class="service-delivers-label">Client outcomes</div>
+      <ul class="service-delivers">
+        <li>Measurable lift in revenue per account and gross margin</li>
+        <li>Higher share of wallet and lower customer concentration risk</li>
+        <li>Stronger customer relationships supported by structured account plans</li>
+        <li>A clear case for whether and when to establish formal US operations</li>
+      </ul>
+    </div>
+
+    <!-- Service 03 -->
+    <div class="service-card">
+      <div class="service-card-header">
+        <span class="service-tag">Profile 03</span>
+        <div class="service-num red">03</div>
+      </div>
+      <div class="service-profile">Deep customer relationships</div>
+      <div class="service-title">Strategic Account Expansion &amp; Footprint Growth</div>
+      <div class="service-desc">
+        Turn deep but narrow relationships into broad, durable partnerships — more divisions, more geographies, more categories, and more strategic relevance.
+      </div>
+      <div class="service-divider"></div>
+      <div class="service-delivers-label">Client outcomes</div>
+      <ul class="service-delivers">
+        <li>Multi-year, multi-line contracts that lock in preferred-supplier status</li>
+        <li>Expansion into new business units, plants, and product categories</li>
+        <li>A wider US geographic footprint with a balanced customer mix</li>
+        <li>Strategic-partner positioning that is difficult for competitors to displace</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="services-row2">
+
+    <!-- Service 04 -->
+    <div class="service-card">
+      <div class="service-card-header">
+        <span class="service-tag">Profile 04</span>
+        <div class="service-num">04</div>
+      </div>
+      <div class="service-profile">Significant US footprint</div>
+      <div class="service-title">Supply Chain &amp; Manufacturing Footprint Optimization</div>
+      <div class="service-desc">
+        Redesign your supply chain and manufacturing footprint for US scale, cost, and policy reality — lowering landed cost, reducing tariff exposure, and building resilience.
+      </div>
+      <div class="service-divider"></div>
+      <div class="service-delivers-label">Client outcomes</div>
+      <ul class="service-delivers">
+        <li>A footprint blueprint that quantifies cost, risk, and resilience trade-offs</li>
+        <li>Lower landed cost and reduced tariff exposure on US-bound revenue</li>
+        <li>Shorter lead times and improved on-time delivery for US customers</li>
+        <li>A defensible regulatory and trade posture for the medium term</li>
+      </ul>
+    </div>
+
+    <!-- Service 05 -->
+    <div class="service-card">
+      <div class="service-card-header">
+        <span class="service-tag">Profile 05</span>
+        <div class="service-num red">05</div>
+      </div>
+      <div class="service-profile">Established US operations</div>
+      <div class="service-title">Moving Up the Value Chain</div>
+      <div class="service-desc">
+        Move from commodity supply to engineered solutions, from products to systems, and from vendor to partner — building the capabilities that justify a premium in the US market.
+      </div>
+      <div class="service-divider"></div>
+      <div class="service-delivers-label">Client outcomes</div>
+      <ul class="service-delivers">
+        <li>A higher-margin revenue mix anchored in solutions, services, or software</li>
+        <li>Recognized brand and category authority in your US end markets</li>
+        <li>An expanded US capability set — engineering, product, and customer-facing roles</li>
+        <li>A US business that is strategically differentiated, not just operationally present</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── HOW WE ENGAGE ── -->
+<section class="engage-section" id="how-we-engage">
+  <div class="engage-grid">
+    <div>
+      <div class="section-label">How we work</div>
+      <h2 class="section-title">Built for results, not reports</h2>
+      <p class="section-sub" style="margin-bottom: 40px;">
+        We work alongside your team rather than handing off a deck. The goal is a US business that runs without us.
+      </p>
+
+      <div class="engage-steps">
+        <div class="engage-step">
+          <div class="engage-step-dot">
+            <div class="engage-dot">1</div>
+          </div>
+          <div class="engage-step-body">
+            <div class="engage-step-title">Short diagnostic</div>
+            <div class="engage-step-desc">Two to four weeks to confirm your client profile, sharpen objectives, and define success metrics for the engagement.</div>
+          </div>
+        </div>
+        <div class="engage-step">
+          <div class="engage-step-dot">
+            <div class="engage-dot">2</div>
+          </div>
+          <div class="engage-step-body">
+            <div class="engage-step-title">Fixed-fee project phases</div>
+            <div class="engage-step-desc">Scoped as clear deliverables with defined milestones — or as retained advisory and execution support, depending on your stage.</div>
+          </div>
+        </div>
+        <div class="engage-step">
+          <div class="engage-step-dot">
+            <div class="engage-dot">3</div>
+          </div>
+          <div class="engage-step-body">
+            <div class="engage-step-title">Execution alongside your team</div>
+            <div class="engage-step-desc">We embed with your people rather than hand off a plan. When we're done, you own a US business that scales on its own terms.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="engage-callout">
+      <div class="engage-callout-title">Our team blends three capabilities</div>
+      <div class="engage-callout-body">
+        We combine deep US commercial expertise with operational know-how and the bilingual fluency to bridge both organizations.
+      </div>
+
+      <div class="engage-team">
+        <div class="engage-team-item">
+          <div class="engage-team-icon">🇺🇸</div>
+          <span>Senior US commercial operators who have built and run growth businesses</span>
+        </div>
+        <div class="engage-team-item">
+          <div class="engage-team-icon">⚙️</div>
+          <span>Supply chain and manufacturing specialists for operational footprint decisions</span>
+        </div>
+        <div class="engage-team-item">
+          <div class="engage-team-icon">🌉</div>
+          <span>Bilingual consultants who understand both the Chinese parent and the US operating environment</span>
+        </div>
+        <div class="engage-team-item">
+          <div class="engage-team-icon">📋</div>
+          <span>Fixed-fee engagements with clear deliverables — no open-ended retainers without accountability</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section" id="faq">
+  <div class="faq-header">
+    <div class="section-label">Common questions</div>
+    <h2 class="section-title">Frequently asked questions</h2>
+    <p class="section-sub">Everything you need to know before reaching out.</p>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Who is Run Far for?
+        <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>We work exclusively with Chinese companies at various stages of US market engagement — from those exploring the US for the first time to companies already operating there and looking to move up the value chain. If your company is based in China and your goal involves the US market, we are built for you.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        What does a typical engagement look like?
+        <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Every engagement starts with a two-to-four-week diagnostic to confirm your profile, sharpen objectives, and agree on success metrics. From there, work is scoped as fixed-fee project phases with clear deliverables — or as retained advisory and execution support. We work alongside your team; we don't hand off a deck.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        How do you determine which service fits us?
+        <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>The right service depends on where you are today: no US customers, existing customers but no local presence, deep relationships ready to scale, a meaningful footprint to optimise, or an established operation looking to move upmarket. We map you to a profile in the initial conversation and confirm it during the diagnostic. Many clients span more than one service as their business grows.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Do you work only with large companies?
+        <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>No. We work with companies at different scales — from mid-size manufacturers entering the US for the first time to large enterprises optimising an existing footprint. What matters is that you are serious about the US market and committed to investing in it properly.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Can you help with tariffs and trade compliance?
+        <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Yes. Our Supply Chain & Manufacturing Footprint Optimization service (Profile 04) includes tariff exposure analysis, USMCA and trade-compliance strategy, and footprint modelling across China, Southeast Asia, Mexico, and the US. We integrate these decisions directly with your commercial pricing to avoid leaving money on the table.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Do you work in Mandarin?
+        <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Yes. Our team includes bilingual consultants fluent in Mandarin and English. All client work can be conducted in either language, and our deliverables can be produced bilingually. We understand the dynamics of the Chinese parent organisation as well as the US operating environment.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        How are engagements priced?
+        <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>We use fixed-fee project phases with clear deliverables — no open-ended retainers without accountability. Fees are scoped after the diagnostic once the work is well-defined. We can also structure retained advisory support for ongoing execution needs. Pricing is shared transparently before any commitment.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        What industries do you focus on?
+        <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Our work spans manufacturing, industrial goods, technology hardware, consumer products, and B2B services. We do not focus on a single vertical — the common thread is Chinese companies with a serious ambition to build or grow a durable US business. If you are unsure whether your sector fits, reach out and we will tell you honestly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="cta-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-label">Get started</div>
+      <h2 class="section-title" style="text-align:left; margin:0 0 16px;">Find out which stage fits you</h2>
+      <p class="section-sub" style="text-align:left; margin:0 0 32px;">
+        Every engagement starts with a short conversation. Tell us where you are in your US journey and we'll tell you exactly where we can help.
+      </p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">✉</div>
+        <a href="mailto:hello@runfar.ai">hello@runfar.ai</a>
+      </div>
+      <div class="contact-detail" style="margin-top:12px;">
+        <div class="contact-detail-icon">📍</div>
+        <span>United States</span>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Wei Zhang" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Acme Manufacturing Co." required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Work email</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required />
+        </div>
+        <div class="form-group">
+          <label for="stage">Which stage best describes you?</label>
+          <select id="stage" name="stage" required>
+            <option value="" disabled selected>Select your current stage</option>
+            <option value="01">01 — No US customers yet</option>
+            <option value="02">02 — Customers, but no US presence</option>
+            <option value="03">03 — Deep US customer relationships</option>
+            <option value="04">04 — Significant US footprint</option>
+            <option value="05">05 — Established US operations</option>
+            <option value="unsure">Not sure — help me figure it out</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell us about your situation <span class="form-optional">(optional)</span></label>
+          <textarea id="message" name="message" rows="4" placeholder="A brief description of your US ambitions and where you're stuck..."></textarea>
+        </div>
+        <button type="submit" class="btn-navy form-submit">
+          Send Message
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="form-success" id="formSuccess" style="display:none;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2ecc71" stroke-width="1.5"/><path d="M6 10l3 3 5-5" stroke="#2ecc71" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Message sent — we'll be in touch within one business day.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">
+        <div class="footer-brand-dot"></div>
+        Run Far
+      </div>
+      <div class="footer-tagline">
+        Helping Chinese companies establish and grow their operations in the United States — at every stage of the journey.
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Go-to-Market Launch</a></li>
+        <li><a href="#services">Account Growth</a></li>
+        <li><a href="#services">Strategic Expansion</a></li>
+        <li><a href="#services">Supply Chain</a></li>
+        <li><a href="#services">Value Chain</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#how-we-engage">How We Work</a></li>
+        <li><a href="#overview">Our Approach</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@runfar.ai">hello@runfar.ai</a></li>
+        <li><a href="#">United States</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 Run Far. All rights reserved.</span>
+    <span>China → United States Market Entry &amp; Growth</span>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      // close all
+      document.querySelectorAll('.faq-q').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.classList.remove('open');
+      });
+      // open clicked if it was closed
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.classList.add('open');
+      }
+    });
+  });
+
+  // Contact form — mailto fallback (no backend)
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('name').value.trim();
+    const company = document.getElementById('company').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const stage   = document.getElementById('stage').value;
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !company || !email || !stage) return;
+
+    const subject = encodeURIComponent('Run Far — Enquiry from ' + name + ' (' + company + ')');
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Company: ' + company + '\n' +
+      'Email: ' + email + '\n' +
+      'Stage: ' + stage + '\n\n' +
+      (message ? message : '(no additional message)')
+    );
+    window.location.href = 'mailto:hello@runfar.ai?subject=' + subject + '&body=' + body;
+
+    document.getElementById('formSuccess').style.display = 'flex';
+    this.reset();
+  });
+</script>
+</body>
+</html>
