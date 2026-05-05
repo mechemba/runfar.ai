@@ -21,14 +21,14 @@
     body { font-family:'Inter',system-ui,sans-serif; color:var(--text); background:var(--white); line-height:1.6; font-size:16px; -webkit-font-smoothing:antialiased; }
 
     /* NAV */
-    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--gray-100); padding:0 6%; display:flex; align-items:center; justify-content:space-between; height:68px; }
+    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--gray-100); padding:0 6%; display:flex; align-items:center; height:68px; }
     .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
     .nav-logo-mark { width:34px; height:34px; background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%); border-radius:8px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
     .nav-logo-mark::after { content:''; position:absolute; right:-4px; top:50%; transform:translateY(-50%); width:14px; height:14px; background:var(--red); border-radius:50%; }
     .nav-logo-mark svg { position:relative; z-index:1; }
     .nav-logo-text { font-size:15px; font-weight:700; color:var(--navy); letter-spacing:-0.3px; }
     .nav-logo-text span { color:var(--red); }
-    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; margin-left:auto; margin-right:16px; }
     .nav-links a { text-decoration:none; font-size:14px; font-weight:500; color:var(--gray-700); transition:color 0.2s; }
     .nav-links a:hover { color:var(--navy); }
     .nav-cta { background:var(--navy) !important; color:var(--white) !important; padding:9px 20px; border-radius:6px; font-size:14px !important; font-weight:600 !important; transition:background 0.2s !important; }
@@ -371,7 +371,7 @@
       <div class="section-label" data-i18n="contact.label">Get started</div>
       <h2 class="section-title" style="text-align:left;margin:0 0 16px" data-i18n="contact.title">Find out which stage fits you</h2>
       <p class="section-sub" style="text-align:left;margin:0 0 32px" data-i18n="contact.sub">Every engagement starts with a short conversation. Tell us where you are in your US journey and we'll tell you exactly where we can help.</p>
-      <div class="contact-detail"><div class="contact-detail-icon">✉</div><a href="mailto:hello@runfar.ai">hello@runfar.ai</a></div>
+      <div class="contact-detail"><div class="contact-detail-icon">✉</div><a href="mailto:harrison@runfar.ai">harrison@runfar.ai</a></div>
       <div class="contact-detail" style="margin-top:12px"><div class="contact-detail-icon">📍</div><span data-i18n="contact.location">United States</span></div>
     </div>
     <div class="contact-form-wrap">
@@ -418,7 +418,7 @@
     <div>
       <div class="footer-col-title" data-i18n="footer.col.contact">Contact</div>
       <ul class="footer-links">
-        <li><a href="mailto:hello@runfar.ai">hello@runfar.ai</a></li>
+        <li><a href="mailto:harrison@runfar.ai">harrison@runfar.ai</a></li>
         <li><a href="#" data-i18n="contact.location">United States</a></li>
       </ul>
     </div>
@@ -665,7 +665,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   if (!name || !company || !email || !stage) return;
   const subject = encodeURIComponent('Run Far — Enquiry from ' + name + ' (' + company + ')');
   const body = encodeURIComponent('Name: ' + name + '\nCompany: ' + company + '\nEmail: ' + email + '\nStage: ' + stage + '\n\n' + (message || '(no additional message)'));
-  window.location.href = 'mailto:hello@runfar.ai?subject=' + subject + '&body=' + body;
+  window.location.href = 'mailto:harrison@runfar.ai?subject=' + subject + '&body=' + body;
   document.getElementById('formSuccess').style.display = 'flex';
   this.reset();
 });
